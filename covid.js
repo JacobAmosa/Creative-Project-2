@@ -61,11 +61,11 @@ document.addEventListener("DOMContentLoaded", function() {
     //let result = document.getElementById('covidResults');
     let country = document.getElementById('covidInput').value;
     console.log(country);
-    fetch('https://covid-api.mmediagroup.fr/v1/cases?country=' + country)
+    fetch('https://covid-api.mmediagroup.fr/v1/cases?country=' + country + '&status=deaths')
     .then(res => res.json())
     .then(function(json) {
         console.log(json);
-        let result = '<h2> returned object for Japan' + json.All.confirmed;
+        let result = '<br><h2>Last updated ' + json.All.updated + ', ' +  json.All.deaths + ' total deaths.</h2>';
         document.getElementById("covidResults").innerHTML = result;
     })
 });
